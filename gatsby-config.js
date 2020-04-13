@@ -2,6 +2,7 @@
 module.exports = {
   siteMetadata: {
     title: `Just Recipes`,
+    short_name: `JR`,
     description: `A frontend to view recipes`,
     author: `Yves Weissig`,
     version: `0.1`,
