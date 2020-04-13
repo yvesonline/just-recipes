@@ -10,6 +10,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: `slug`,
       value: slug,
     })
+    const keywords = node.keywords.split(",")
+    createNodeField({
+      node,
+      name: `keywords`,
+      value: keywords.map((item, key) => item.trim()),
+    })
   }
 }
 
@@ -30,12 +36,36 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
   result.data.allRecipe.edges.forEach(({ node }) => {
     createPage({
-      path: node.fields.slug,
+      path: `recipes/` + node.fields.slug,
       component: path.resolve(`./src/templates/recipe.js`),
       context: {
-        // Data passed to context is available
-        // in page queries as GraphQL variables.
         slug: node.fields.slug,
+      },
+    })
+  })
+  const result2 = await graphql(`
+    query {
+      allRecipe {
+        edges {
+          node {
+            fields {
+              keywords
+            }
+          }
+        }
+      }
+    }
+  `)
+  let keywords = new Set()
+  result2.data.allRecipe.edges.forEach(({ node }) => {
+    node.fields.keywords.map((item, key) => keywords.add(item))
+  })
+  keywords.forEach((value) => {
+    createPage({
+      path: `tags/` + value,
+      component: path.resolve(`./src/templates/tag.js`),
+      context: {
+        tag: value,
       },
     })
   })
