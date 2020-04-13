@@ -1,9 +1,10 @@
 
 module.exports = {
   siteMetadata: {
-    title: `NYT Cooking Frontend`,
-    description: `A simple description about pandas eating lots...`,
-    author: `gatsbyjs`,
+    title: `Just Recipes`,
+    description: `A frontend to view recipes`,
+    author: `Yves Weissig`,
+    version: `0.1`,
   },
   plugins: [
     {
@@ -22,8 +23,10 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `GatsbyJS`,
-        short_name: `GatsbyJS`,
+        name: `Just Recipes`,
+        short_name: `JR`,
+        description: `A frontend to view recipes`,
+        lang: `en`,
         start_url: `/`,
         background_color: `#6b37bf`,
         theme_color: `#6b37bf`,
