@@ -1,10 +1,11 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
 export default ({ data }) => {
   console.log(data)
   return (
-    <div>
+    <Layout>
       <h1>My Site's Recipes</h1>
       <table>
         <thead>
@@ -26,7 +27,7 @@ export default ({ data }) => {
           ))}
         </tbody>
       </table>
-    </div>
+    </Layout>
   )
 }
 
