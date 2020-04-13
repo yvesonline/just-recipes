@@ -6,4 +6,6 @@ $ gatsby help
 $ gatsby develop
 $ gatsby build
 $ gatsby serve
+
+npm install --save bulma node-sass gatsby-plugin-sass
 ```
