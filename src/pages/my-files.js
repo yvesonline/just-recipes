@@ -5,23 +5,23 @@ export default ({ data }) => {
   console.log(data)
   return (
     <div>
-      <h1>My Site's Files</h1>
+      <h1>My Site's Recipes</h1>
       <table>
         <thead>
           <tr>
-            <th>relativePath</th>
-            <th>prettySize</th>
-            <th>extension</th>
-            <th>birthTime</th>
+            <th>id</th>
+            <th>name</th>
+            <th>ratingCount</th>
+            <th>ratingValue</th>
           </tr>
         </thead>
         <tbody>
-          {data.allFile.edges.map(({ node }, index) => (
+          {data.allRecipe.edges.map(({ node }, index) => (
             <tr key={index}>
-              <td>{node.relativePath}</td>
-              <td>{node.prettySize}</td>
-              <td>{node.extension}</td>
-              <td>{node.birthTime}</td>
+              <td>{node.id}</td>
+              <td>{node.name}</td>
+              <td>{node.aggregateRating.ratingCount}</td>
+              <td>{node.aggregateRating.ratingValue}</td>
             </tr>
           ))}
         </tbody>
@@ -32,13 +32,15 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allFile {
+    allRecipe(sort: {order: [DESC, DESC], fields: [aggregateRating___ratingValue, aggregateRating___ratingCount]}, filter: {aggregateRating: {ratingValue: {ne: null}, ratingCount: {gt: 30}}}) {
       edges {
         node {
-          relativePath
-          prettySize
-          extension
-          birthTime(fromNow: true)
+          id
+          name
+          aggregateRating {
+            ratingCount
+            ratingValue
+          }
         }
       }
     }
