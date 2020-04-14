@@ -16,7 +16,7 @@ export default () => {
       })
     }
   }
-  if (paths.length > 1) {
+  if (paths.length >= 1) {
     paths[paths.length - 1].active = true
   }
   const data = useStaticQuery(
