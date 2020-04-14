@@ -1,15 +1,16 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
+import SEO from "../components/seo"
 
 export default ({ data }) => {
   return (
     <Layout>
-      <h1>My Site's Recipes</h1>
+      <SEO title="Recipes" description="Our overview of recipes" />
       <table>
         <thead>
           <tr>
-            <th>id</th>
+            <th>slug</th>
             <th>name</th>
             <th>ratingCount</th>
             <th>ratingValue</th>
@@ -18,7 +19,7 @@ export default ({ data }) => {
         <tbody>
           {data.allRecipe.edges.map(({ node }, index) => (
             <tr key={index}>
-              <td>{node.id}</td>
+              <td><Link to={"/recipes/" + node.fields.slug}>{node.fields.slug}</Link></td>
               <td>{node.name}</td>
               <td>{node.aggregateRating.ratingCount}</td>
               <td>{node.aggregateRating.ratingValue}</td>
@@ -40,6 +41,9 @@ export const query = graphql`
           aggregateRating {
             ratingCount
             ratingValue
+          }
+          fields {
+            slug
           }
         }
       }

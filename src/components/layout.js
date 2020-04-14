@@ -3,9 +3,9 @@ import Header from "../components/header"
 import Footer from "../components/footer"
 import "../scss/styles.scss"
 
-export default ({ children }) => (
+export default ({ breadcrumbOverride, children }) => (
   <div className="container">
-    <Header></Header>
+    <Header breadcrumbOverride={breadcrumbOverride}></Header>
     {children}
     <Footer></Footer>
   </div>

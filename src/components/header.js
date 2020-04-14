@@ -3,7 +3,7 @@ import { globalHistory as history } from '@reach/router'
 import { useStaticQuery, graphql, Link } from "gatsby"
 import { FaUtensils } from 'react-icons/fa';
 
-export default () => {
+export default ({ breadcrumbOverride }) => {
   const { location } = history
   let paths = []
   for (const [index, value] of location.pathname.split("/").entries()) {
@@ -18,6 +18,9 @@ export default () => {
   }
   if (paths.length >= 1) {
     paths[paths.length - 1].active = true
+  }
+  if (paths.length >= 1 && breadcrumbOverride) {
+    paths[paths.length - 1].text = breadcrumbOverride
   }
   const data = useStaticQuery(
   graphql`
