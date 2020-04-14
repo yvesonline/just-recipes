@@ -1,8 +1,8 @@
 @charset "utf-8";
 
 @font-face {
-    font-family: 'BioRhyme';
-    src: url(BioRhyme/BioRhyme-Regular.ttf) format('truetype');
+		font-family: 'BioRhyme';
+		src: url(BioRhyme/BioRhyme-Regular.ttf) format('truetype');
 }
 
 $title-color: #ff0000;
@@ -11,14 +11,14 @@ $sizes: (0,10,15,20,25,30,50);
 $positions: ('top','left','bottom','right');
 
 @each $size in $sizes {
-  @each $position in $positions {
-    .m#{str-slice($position, 0, 1)}-#{$size} {
-      margin-#{$position}: $size + px;
-    }
-    .p#{str-slice($position, 0, 1)}-#{$size} {
-      padding-#{$position}: $size + px;
-    }
-  }
+	@each $position in $positions {
+		.m#{str-slice($position, 0, 1)}-#{$size} {
+			margin-#{$position}: $size + px;
+		}
+		.p#{str-slice($position, 0, 1)}-#{$size} {
+			padding-#{$position}: $size + px;
+		}
+	}
 }
 
 .logo {
@@ -27,7 +27,8 @@ $positions: ('top','left','bottom','right');
 .rounded {
 	border: 1px solid black;
 	border-radius: 14px;
-	padding: 7px;
+	padding-left: 7px;
+	padding-right: 7px;
 }
 
 @import "~bulma/bulma.sass";

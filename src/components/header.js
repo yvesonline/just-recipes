@@ -1,10 +1,11 @@
 import React from "react"
 import { Link } from "gatsby"
+import { FaUtensils } from 'react-icons/fa';
 
 export default () => (
   <nav class="navbar" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
-      <Link to="/" className="logo navbar-item has-text-black title mt-10 mb-10">Just Recipes</Link>
+      <Link to="/" className="logo navbar-item has-text-black title mt-10 mb-10"><FaUtensils />&nbsp;Just Recipes</Link>
 
       <div role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
         <span aria-hidden="true"></span>

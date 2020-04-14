@@ -1,5 +1,6 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
+import { FaUtensils, FaHeart } from 'react-icons/fa';
 
 export default () => {
   const data = useStaticQuery(
@@ -19,7 +20,13 @@ export default () => {
     <footer class="footer">
       <div class="content has-text-centered">
         <p>
-          <span class="logo rounded">{data.site.siteMetadata.short_name}</span>&nbsp;&nbsp;&nbsp;&nbsp;<strong>{data.site.siteMetadata.title}</strong>&nbsp;&nbsp;&nbsp;&nbsp;Version {data.site.siteMetadata.version}
+          <FaUtensils />&nbsp;<strong>{data.site.siteMetadata.title}</strong>
+        </p>
+        <p>
+          Version <span class="logo rounded">{data.site.siteMetadata.version}</span>
+        </p>
+        <p>
+          Made with <FaHeart /> in London.
         </p>
       </div>
     </footer>
