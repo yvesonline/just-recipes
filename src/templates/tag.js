@@ -1,13 +1,16 @@
 import React from "react"
 import { graphql } from "gatsby"
+import Layout from "../components/layout"
 
 export default ({ data }) => {
   return (
-    <ul>
-      {data.allRecipe.edges.map(({ node }, index) => (
-        <li>{index}: {node.name}</li>
-      ))}
-    </ul>
+    <Layout>
+      <ul>
+        {data.allRecipe.edges.map(({ node }, index) => (
+          <li key={index}>{node.name}</li>
+        ))}
+      </ul>
+    </Layout>
   )
 }
 

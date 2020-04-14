@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import Layout from "../components/layout"
 
 export default ({ data }) => {
@@ -15,12 +15,16 @@ export default ({ data }) => {
   })
   return (
     <Layout>
-      <h1>My Site's Tags</h1>
-      <ul>
+      <div className="field is-grouped is-grouped-multiline">
         {Array.from(keywords.entries(), ([key, value]) => (
-          <li>{key}: {value}</li>
+          <div className="control" key={key}>
+            <div className="tags has-addons">
+              <span className="tag is-primary"><Link className="has-text-white" to={"/tags/" + key}>{key}</Link></span>
+              <span className="tag is-info">{value}</span>
+            </div>
+          </div>
         ))}
-      </ul>
+      </div>
     </Layout>
   )
 }

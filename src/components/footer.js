@@ -17,18 +17,21 @@ export default () => {
     `
   )
   return (
-    <footer class="footer">
-      <div class="content has-text-centered">
-        <p>
-          <FaUtensils />&nbsp;<strong>{data.site.siteMetadata.title}</strong>
-        </p>
-        <p>
-          Version <span class="logo rounded">{data.site.siteMetadata.version}</span>
-        </p>
-        <p>
-          Made with <FaHeart /> in London.
-        </p>
-      </div>
-    </footer>
+    <div>
+      <br />
+      <footer className="footer">
+        <div className="content has-text-centered">
+          <p>
+            <FaUtensils />&nbsp;<strong>{data.site.siteMetadata.title}</strong>
+          </p>
+          <p>
+            Version <span className="logo rounded">{data.site.siteMetadata.version}</span>
+          </p>
+          <p>
+            Made with <FaHeart /> in London.
+          </p>
+        </div>
+      </footer>
+    </div>
   )
 }
