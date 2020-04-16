@@ -1,32 +1,36 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
+import moment from "moment"
 import Layout from "../components/layout"
 import SEO from "../components/seo"
+import RecipeSmallBox from "../components/RecipeSmallBox"
 
 export default ({ data }) => {
+  let thumbs = new Map()
+  data.allFile.edges.forEach(({ node }) => {
+    thumbs[node.name] = node.publicURL
+  })
+  const rows = [...Array( Math.ceil(data.allRecipe.edges.length / 3) )]
+  const dataRows = rows.map((row, idx) => data.allRecipe.edges.slice(idx * 3, idx * 3 + 3) )
+  const content = dataRows.map((row, idx) => (
+    <div className="columns" key={idx}>
+      {row.map(node => (
+        <div className="column is-4" key={node.node.name}>
+          <RecipeSmallBox
+            link={"/recipes/" + node.node.fields.slug}
+            name={node.node.name}
+            image={thumbs[node.node.image_internal]}
+            time={moment.duration(node.node.totalTime).humanize()}
+            stars={node.node.aggregateRating ? node.node.aggregateRating.ratingValue : undefined}
+            />
+        </div>
+      ))}
+    </div>
+  ))
   return (
     <Layout>
       <SEO title="Recipes" description="Our overview of recipes" />
-      <table>
-        <thead>
-          <tr>
-            <th>slug</th>
-            <th>name</th>
-            <th>ratingCount</th>
-            <th>ratingValue</th>
-          </tr>
-        </thead>
-        <tbody>
-          {data.allRecipe.edges.map(({ node }, index) => (
-            <tr key={index}>
-              <td><Link to={"/recipes/" + node.fields.slug}>{node.fields.slug}</Link></td>
-              <td>{node.name}</td>
-              <td>{node.aggregateRating.ratingCount}</td>
-              <td>{node.aggregateRating.ratingValue}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      {content}
     </Layout>
   )
 }
@@ -36,15 +40,24 @@ export const query = graphql`
     allRecipe(sort: {order: [DESC, DESC], fields: [aggregateRating___ratingValue, aggregateRating___ratingCount]}, filter: {aggregateRating: {ratingValue: {ne: null}, ratingCount: {gt: 30}}}) {
       edges {
         node {
-          id
           name
+          image_internal
+          totalTime
           aggregateRating {
-            ratingCount
             ratingValue
           }
           fields {
             slug
           }
+        }
+      }
+    }
+    allFile(filter: {relativePath: {regex: "/.*full.*/"}}) {
+      edges {
+        node {
+          relativePath
+          name
+          publicURL
         }
       }
     }

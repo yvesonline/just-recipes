@@ -31,4 +31,8 @@ $positions: ('top','left','bottom','right');
 	padding-right: 7px;
 }
 
+.card-header {
+	min-height: 100px;
+}
+
 @import "~bulma/bulma.sass";
