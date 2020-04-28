@@ -21,8 +21,8 @@ export default ({ data }) => {
         {Array.from(keywords.entries(), ([key, value]) => (
           <div className="control" key={key}>
             <div className="tags has-addons">
-              <span className="tag is-primary"><Link className="has-text-white" to={"/tags/" + key}>{key}</Link></span>
-              <span className="tag is-info">{value}</span>
+              <span className="tag is-info is-capitalized"><Link className="has-text-white" to={"/tags/" + key}>{key}</Link></span>
+              <span className="tag is-primary">{value}</span>
             </div>
           </div>
         ))}

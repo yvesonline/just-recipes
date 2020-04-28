@@ -10,6 +10,12 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
       name: `slug`,
       value: slug,
     })
+    const numId = 0
+    createNodeField({
+      node,
+      name: `numId`,
+      value: parseInt(slug.substring(1, slug.indexOf("-"))),
+    })
     const keywords = node.keywords.split(",")
     createNodeField({
       node,

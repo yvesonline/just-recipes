@@ -33,7 +33,7 @@ export default ({ data }) => {
   ))
   return (
     <Layout>
-      <SEO title={tag}  description={"Tags about '"+tag+"'"} />
+      <SEO title={tag} description={"Tags about '"+tag+"'"} />
       {content}
     </Layout>
   )
