@@ -1,15 +1,14 @@
 import React from "react"
-import { globalHistory as history } from '@reach/router'
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import moment from "moment"
+import { FaCaretSquareDown, FaCaretSquareUp } from "react-icons/fa";
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import RecipeSmallBox from "../components/RecipeSmallBox"
 
-export default ({ data }) => {
-  const { location } = history
-  const lowercase_tag = decodeURI(location.pathname).slice(location.pathname.lastIndexOf("/") + 1)
-  const tag = lowercase_tag.charAt(0).toUpperCase() + lowercase_tag.slice(1)
+export default ({ pageContext, data }) => {
+  console.log(pageContext)
+  const tag = pageContext.tag.charAt(0).toUpperCase() + pageContext.tag.slice(1)
   let thumbs = new Map()
   data.allFile.edges.forEach(({ node }) => {
     thumbs[node.name] = node.publicURL
@@ -34,14 +33,40 @@ export default ({ data }) => {
   return (
     <Layout>
       <SEO title={tag} description={"Tags about '"+tag+"'"} />
+      <div class="buttons is-right">
+          <Link to={"/tags/" + pageContext.tag + "/aggregateRating___ratingValue/ASC"}>
+            <button className="button">
+              <span>Rating</span>&nbsp;
+              <FaCaretSquareDown />
+            </button>
+          </Link>
+          <Link to={"/tags/" + pageContext.tag + "/aggregateRating___ratingValue/DESC"}>
+            <button className="button">
+              <span>Rating</span>&nbsp;
+              <FaCaretSquareUp />
+            </button>
+          </Link>
+          <Link to={"/tags/" + pageContext.tag + "/aggregateRating___ratingValue/ASC"}>
+            <button className="button">
+              <span>Date</span>&nbsp;
+              <FaCaretSquareDown />
+            </button>
+          </Link>
+          <Link to={"/tags/" + pageContext.tag + "/aggregateRating___ratingValue/DESC"}>
+            <button className="button">
+              <span>Date</span>&nbsp;
+              <FaCaretSquareUp />
+            </button>
+          </Link>
+      </div>
       {content}
     </Layout>
   )
 }
 
 export const query = graphql`
-  query($tag: String!) {
-    allRecipe(filter: {fields: {keywords: {in: [$tag]}}}) {
+  query($tag: String!, $sortBy: [RecipeFieldsEnum], $sortDir: [SortOrderEnum]) {
+    allRecipe(filter: {fields: {keywords: {in: [$tag]}}}, , sort: {order: $sortDir, fields: $sortBy}) {
       edges {
         node {
           name

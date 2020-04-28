@@ -66,13 +66,32 @@ exports.createPages = async ({ graphql, actions }) => {
   result2.data.allRecipe.edges.forEach(({ node }) => {
     node.fields.keywords.map((item, key) => keywords.add(item))
   })
-  keywords.forEach((value) => {
+  let sortings = [
+    ["aggregateRating___ratingValue", "DESC"],
+    ["aggregateRating___ratingValue", "ASC"],
+    ["fields___numId", "DESC"],
+    ["fields___numId", "ASC"],
+  ]
+  keywords.forEach((keyword) => {
     createPage({
-      path: `tags/` + value,
+      path: `tags/` + keyword,
       component: path.resolve(`./src/templates/Tag.js`),
       context: {
-        tag: value,
+        tag: keyword,
+        sortBy: "aggregateRating___ratingValue",
+        sortDir: "ASC",
       },
+    })
+    sortings.forEach((sorting) => {
+      createPage({
+        path: `tags/` + keyword + `/` + sorting[0] + `/` + sorting[1],
+        component: path.resolve(`./src/templates/Tag.js`),
+        context: {
+          tag: keyword,
+          sortBy: sorting[0],
+          sortDir: sorting[1],
+        },
+      })
     })
   })
 }
