@@ -44,9 +44,9 @@ export default ({ breadcrumbOverride }) => {
   )
   return (
     <div>
-      <nav className="navbar" role="navigation" aria-label="main navigation">
+      <nav className="navbar is-fixed-top" role="navigation" aria-label="main navigation">
         <div className="navbar-brand">
-          <Link to="/" className="logo navbar-item has-text-black title mt-10 mb-10"><FaUtensils />&nbsp;{data.site.siteMetadata.title}</Link>
+          <Link to="/" className="logo navbar-item has-text-black title mt-10 mb-10 ml-20"><FaUtensils />&nbsp;{data.site.siteMetadata.title}</Link>
 
           <div role="button" className="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
@@ -54,7 +54,7 @@ export default ({ breadcrumbOverride }) => {
             <span aria-hidden="true"></span>
           </div>
         </div>
-        <div className="navbar-end mb-20">
+        <div className="navbar-end mb-10 mr-20">
           <div className="navbar-item">
             <div className="buttons">
               <Link to="/recipes/" className="button is-primary"><strong>Recipes</strong></Link>

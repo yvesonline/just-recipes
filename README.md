@@ -4,7 +4,7 @@
 
 Just Recipes is a beautiful frontend for a recipe collection.
 
-It showcases using a static site generator, in this case [Gatsby](https://www.gatsbyjs.org/).
+It showcases using a static site generator, in this case [Gatsby](https://www.gatsbyjs.org/) in combination with [Bulma](https://bulma.io/).
 
 ## Site map
 
@@ -34,8 +34,8 @@ $ npm install --save bulma node-sass gatsby-plugin-sass  # Example of installing
 ## To-do list
 
 - Recipe Detail: Create page
+- Search: Create page
 - Tag Detail: Implement client-side sorting (by stars, by most recent)
 - Recipes: Implement pagination
-- Global: Implement fixed navigation bar
 - Global: Add screenshots to `README.md`
 - Global: Create Docker version of application
