@@ -64,7 +64,7 @@ export default ({ breadcrumbOverride }) => {
         </div>
       </nav>
       {paths.length >= 1 &&
-        <nav className="breadcrumb" aria-label="breadcrumbs">
+        <nav className="breadcrumb mt-80" aria-label="breadcrumbs">
           <ul>
             <li><Link to="/">{data.site.siteMetadata.short_name}</Link></li>
             {paths.map((path, index) => (
