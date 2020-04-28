@@ -1,7 +1,6 @@
-- Rename components, templates and pages (Capitalize)
 - Create detail page
-- Implement custom sorting (by stars, by most recent)
-- Implement pagination
+- Implement client-side sorting (by stars, by most recent)
+- Implement pagination (for recipes page only)
 - Implement fixed navigation bar
 - Update readme with set up instructions and screenshots
 - Create Docker version of application

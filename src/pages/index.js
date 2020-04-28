@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 
 export default ({ data }) => {
   let images = new Map()
@@ -9,7 +9,7 @@ export default ({ data }) => {
     images.set(node.name, node.publicURL)
   })
   return (
-    <Layout>
+    <Layout breadcrumbOverride="The latest 3 recipes...">
       <SEO title="All you add is love" description="Welcome to our website" />
       {data.allRecipe.edges.map(({ node }) => (
         <div className="columns" key={node.name}>

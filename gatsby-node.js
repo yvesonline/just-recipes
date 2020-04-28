@@ -43,7 +43,7 @@ exports.createPages = async ({ graphql, actions }) => {
   result.data.allRecipe.edges.forEach(({ node }) => {
     createPage({
       path: `recipes` + node.fields.slug,
-      component: path.resolve(`./src/templates/recipe.js`),
+      component: path.resolve(`./src/templates/Recipe.js`),
       context: {
         slug: node.fields.slug,
       },
@@ -69,7 +69,7 @@ exports.createPages = async ({ graphql, actions }) => {
   keywords.forEach((value) => {
     createPage({
       path: `tags/` + value,
-      component: path.resolve(`./src/templates/tag.js`),
+      component: path.resolve(`./src/templates/Tag.js`),
       context: {
         tag: value,
       },

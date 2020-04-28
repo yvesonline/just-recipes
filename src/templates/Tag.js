@@ -2,8 +2,8 @@ import React from "react"
 import { globalHistory as history } from '@reach/router'
 import { graphql } from "gatsby"
 import moment from "moment"
-import Layout from "../components/layout"
-import SEO from "../components/seo"
+import Layout from "../components/Layout"
+import SEO from "../components/SEO"
 import RecipeSmallBox from "../components/RecipeSmallBox"
 
 export default ({ data }) => {

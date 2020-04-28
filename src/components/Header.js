@@ -16,6 +16,14 @@ export default ({ breadcrumbOverride }) => {
       })
     }
   }
+  if (paths.length === 0 && breadcrumbOverride) {
+    paths.push({
+      index: 1,
+      link: "",
+      text: breadcrumbOverride,
+      active: false,
+    })
+  }
   if (paths.length >= 1) {
     paths[paths.length - 1].active = true
   }
