@@ -1,12 +1,21 @@
 @charset "utf-8";
 
+/*
+Load signature font.
+*/
 @font-face {
-		font-family: 'BioRhyme';
-		src: url(BioRhyme/BioRhyme-Regular.ttf) format('truetype');
+	font-family: 'BioRhyme';
+	src: url(BioRhyme/BioRhyme-Regular.ttf) format('truetype');
 }
 
+/*
+Define custom title color.
+*/
 $title-color: #ff0000;
 
+/*
+Create margin and padding helpers.
+*/
 $sizes: (0,10,15,20,25,30,50);
 $positions: ('top','left','bottom','right');
 
@@ -21,9 +30,22 @@ $positions: ('top','left','bottom','right');
 	}
 }
 
+/*
+Define custom colors for cards.
+*/
+$card-header-background-color: #F9F9F9;
+$card-content-background-color: #F9F9F9;
+
+/*
+Specify special `.logo` class with signature font.
+*/
 .logo {
-	font-family: "BioRhyme";
+	font-family: 'BioRhyme';
 }
+
+/*
+Specify special `.rounded` class for use with version in footer.
+*/
 .rounded {
 	border: 1px solid black;
 	border-radius: 14px;
@@ -31,8 +53,21 @@ $positions: ('top','left','bottom','right');
 	padding-right: 7px;
 }
 
+/*
+Prettier formatting for the cards, here:
+- Minimum header height.
+- Equal height of boxes next to each other.
+*/
 .card-header {
 	min-height: 100px;
+}
+.card-equal-height {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.card-equal-height .card-footer {
+	margin-top: auto;
 }
 
 @import "~bulma/bulma.sass";

@@ -5,15 +5,18 @@ import { FaStar, FaRegStar } from 'react-icons/fa';
 export default (props) => {
   return (
     <Link to={props.link}>
-      <div className="card">
+      <div className="card card-equal-height">
         <div className="card-header">
           <div className="card-header-title is-centered">
             {props.name}
           </div>
         </div>
         <div className="card-image">
-          <figure className="image">
-            <img src={props.image} alt=" " />
+          <figure className="image is-3by2">
+            {props.image !== undefined
+              ? <img src={props.image} alt=" " />
+              : <img src="/480x320.png" alt=" " />
+            }
           </figure>
         </div>
         <div className="card-content">

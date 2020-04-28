@@ -1,0 +1,7 @@
+- Rename components, templates and pages (Capitalize)
+- Create index page
+- Create detail page
+- Add favicon for application
+- Implement fixed navigation bar
+- Update readme with set up instructions and screenshots
+- Create Docker version of application
