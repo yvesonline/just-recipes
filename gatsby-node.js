@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allRecipe {
+      allRecipe(limit: 100000) {
         edges {
           node {
             fields {
@@ -40,6 +40,21 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  const numRecipes = result.data.allRecipe.edges.length
+  const recipesPerPage = 9
+  const numPages = Math.ceil(numRecipes / recipesPerPage)
+  Array.from({ length: numPages }).forEach((_, i) => {
+    createPage({
+      path: `/recipes/page-${i + 1}`,
+      component: path.resolve("./src/templates/RecipeList.js"),
+      context: {
+        limit: recipesPerPage,
+        skip: i * recipesPerPage,
+        numPages,
+        currentPage: i + 1,
+      },
+    })
+  })
   result.data.allRecipe.edges.forEach(({ node }) => {
     createPage({
       path: `recipes` + node.fields.slug,

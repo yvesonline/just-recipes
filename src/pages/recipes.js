@@ -37,7 +37,7 @@ export default ({ data }) => {
 
 export const query = graphql`
   query {
-    allRecipe(sort: {order: [DESC, DESC], fields: [aggregateRating___ratingValue, aggregateRating___ratingCount]}, filter: {aggregateRating: {ratingValue: {ne: null}, ratingCount: {gt: 30}}}) {
+    allRecipe {
       edges {
         node {
           name

@@ -59,7 +59,7 @@ export default ({ breadcrumbOverride }) => {
         <div className="navbar-end mb-10 mr-20">
           <div className="navbar-item">
             <div className="buttons">
-              <Link to="/recipes/" className="button is-primary"><strong>Recipes</strong></Link>
+              <Link to="/recipes/page-1" className="button is-primary"><strong>Recipes</strong></Link>
               <Link to="/tags/" className="button is-primary"><strong>Tags</strong></Link>
             </div>
           </div>

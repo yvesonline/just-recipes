@@ -36,7 +36,6 @@ $ npm install --save bulma node-sass gatsby-plugin-sass  # Example of installing
 
 - Recipe Detail: Create page
 - Search: Create page
-- Recipes: Implement pagination
-- Recipes alphabetical: Create page
+- Recipes: Implement alphabetical pages
 - Global: Add screenshots to `README.md`
 - Global: Create Docker version of application
