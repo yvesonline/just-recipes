@@ -40,13 +40,14 @@ exports.createPages = async ({ graphql, actions }) => {
       }
     }
   `)
+  // Create paginated recipe pages
   const numRecipes = result.data.allRecipe.edges.length
   const recipesPerPage = 9
   const numPages = Math.ceil(numRecipes / recipesPerPage)
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: `/recipes/page-${i + 1}`,
-      component: path.resolve("./src/templates/RecipeList.js"),
+      component: path.resolve("./src/templates/RecipeListNumerical.js"),
       context: {
         limit: recipesPerPage,
         skip: i * recipesPerPage,
@@ -55,6 +56,20 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
+  // Create alphabetical recipe pages
+  const abc = "abcdefghijklmnopqrstuvwxyz"
+  let i = abc.length
+  while (i--) {
+    createPage({
+      path: `/recipes/page-${abc.charAt(i)}`,
+      component: path.resolve("./src/templates/RecipeListAlphabetical.js"),
+      context: {
+        letter: abc.charAt(i),
+        regex: `/^[${abc.charAt(i)}${abc.charAt(i).toUpperCase()}].*/`,
+      },
+    })
+  }
+  // Create individual recipe pages
   result.data.allRecipe.edges.forEach(({ node }) => {
     createPage({
       path: `recipes` + node.fields.slug,
