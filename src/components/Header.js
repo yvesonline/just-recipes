@@ -11,7 +11,7 @@ export default ({ breadcrumbOverride }) => {
       paths.push({
         index: index,
         link: `/` + value + `/`,
-        text: decodeURI(value).charAt(0).toUpperCase() + decodeURI(value).slice(1),
+        text: value.replace(/-/g, " "),
         active: false,
       })
     }
@@ -68,7 +68,7 @@ export default ({ breadcrumbOverride }) => {
           <ul>
             <li><Link to="/">{data.site.siteMetadata.short_name}</Link></li>
             {paths.map((path, index) => (
-              <li key={path.link} className={path.active ? "is-active" : ""}><Link to={path.link}>{path.text}</Link></li>
+              <li key={path.link} className={path.active ? "is-active is-capitalized" : "is-capitalized"}><Link to={path.link}>{path.text}</Link></li>
             ))}
           </ul>
         </nav>

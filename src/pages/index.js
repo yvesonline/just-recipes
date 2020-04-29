@@ -9,7 +9,7 @@ export default ({ data }) => {
     images.set(node.name, node.publicURL)
   })
   return (
-    <Layout breadcrumbOverride="The latest 3 recipes...">
+    <Layout breadcrumbOverride="The Latest 3 Recipes...">
       <SEO title="All you add is love" description="Welcome to our website" />
       {data.allRecipe.edges.map(({ node }) => (
         <div className="columns" key={node.name}>
@@ -30,7 +30,7 @@ export default ({ data }) => {
             <div className="field is-grouped is-grouped-multiline">
               {Array.from(node.fields.keywords.entries(), ([key, value]) => (
                 <div className="control" key={key}>
-                  <span className="tag is-info is-capitalized"><Link className="has-text-white" to={"/tags/" + value}>{value}</Link></span>
+                  <span className="tag is-info is-capitalized"><Link className="has-text-white" to={"/tags/" + value}>{value.replace(/-/g, " ")}</Link></span>
                 </div>
               ))}
             </div>

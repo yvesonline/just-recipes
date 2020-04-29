@@ -20,7 +20,7 @@ exports.onCreateNode = ({ node, getNode, actions }) => {
     createNodeField({
       node,
       name: `keywords`,
-      value: keywords.map((item, key) => item.trim()),
+      value: keywords.map((item, key) => item.trim().replace(/ /g, "-")),
     })
   }
 }
@@ -67,10 +67,10 @@ exports.createPages = async ({ graphql, actions }) => {
     node.fields.keywords.map((item, key) => keywords.add(item))
   })
   let sortings = [
-    ["aggregateRating___ratingValue", "DESC"],
-    ["aggregateRating___ratingValue", "ASC"],
-    ["fields___numId", "DESC"],
-    ["fields___numId", "ASC"],
+    ["aggregateRating___ratingValue", "DESC", "sorted-by-rating-in-descending-order"],
+    ["aggregateRating___ratingValue", "ASC", "sorted-by-rating-in-ascending-order"],
+    ["fields___numId", "DESC", "sorted-by-date-in-descending-order"],
+    ["fields___numId", "ASC", "sorted-by-date-in-ascending-order"],
   ]
   keywords.forEach((keyword) => {
     createPage({
@@ -84,7 +84,7 @@ exports.createPages = async ({ graphql, actions }) => {
     })
     sortings.forEach((sorting) => {
       createPage({
-        path: `tags/` + keyword + `/` + sorting[0] + `/` + sorting[1],
+        path: `tags/` + keyword + `/` + sorting[2],
         component: path.resolve(`./src/templates/Tag.js`),
         context: {
           tag: keyword,
