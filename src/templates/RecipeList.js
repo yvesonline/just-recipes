@@ -35,36 +35,36 @@ export default ({ pageContext, data }) => {
       />
       <nav className="pagination is-centered" role="navigation" aria-label="pagination">
         {pageContext.currentPage !== 1 &&
-          <Link to={"recipes/page-" + (pageContext.currentPage - 1)} className="pagination-previous">Previous</Link>
+          <Link to={"/recipes/page-" + (pageContext.currentPage - 1)} className="pagination-previous">Previous</Link>
         }
         {pageContext.currentPage === 1 &&
-          <Link to={"recipes/page-" + (pageContext.currentPage - 1)} className="pagination-previous" disabled>Previous</Link>
+          <Link to={"/recipes/page-" + (pageContext.currentPage - 1)} className="pagination-previous" disabled>Previous</Link>
         }
         {pageContext.currentPage !== pageContext.numPages &&
-          <Link to={"recipes/page-" + (pageContext.currentPage + 1)} className="pagination-next">Next</Link>
+          <Link to={"/recipes/page-" + (pageContext.currentPage + 1)} className="pagination-next">Next</Link>
         }
         {pageContext.currentPage === pageContext.numPages &&
-          <Link to={"recipes/page-" + (pageContext.currentPage + 1)} className="pagination-next" disabled>Next</Link>
+          <Link to={"/recipes/page-" + (pageContext.currentPage + 1)} className="pagination-next" disabled>Next</Link>
         }
         <ul className="pagination-list">
           {pageContext.currentPage >= 3 &&
-            <li><Link to="recipes/page-1" className="pagination-link" aria-label="Goto page 1">1</Link></li>
+            <li><Link to="/recipes/page-1" className="pagination-link" aria-label="Goto page 1">1</Link></li>
           }
           {pageContext.currentPage >= 3 &&
             <li><span className="pagination-ellipsis">&hellip;</span></li>
           }
           {pageContext.currentPage >= 2 &&
-            <li><Link to={"recipes/page-" + (pageContext.currentPage - 1)} className="pagination-link" aria-label={"Goto page " + (pageContext.currentPage - 1)}>{(pageContext.currentPage - 1)}</Link></li>
+            <li><Link to={"/recipes/page-" + (pageContext.currentPage - 1)} className="pagination-link" aria-label={"Goto page " + (pageContext.currentPage - 1)}>{(pageContext.currentPage - 1)}</Link></li>
           }
-          <li><Link to={"recipes/page-" + pageContext.currentPage} className="pagination-link is-current" aria-label={"Page " + pageContext.currentPage} aria-current="page">{pageContext.currentPage}</Link></li>
+          <li><Link to={"/recipes/page-" + pageContext.currentPage} className="pagination-link is-current" aria-label={"Page " + pageContext.currentPage} aria-current="page">{pageContext.currentPage}</Link></li>
           {pageContext.currentPage + 1 <= pageContext.numPages &&
-            <li><Link to={"recipes/page-" + (pageContext.currentPage + 1)} className="pagination-link" aria-label={"Goto page " + (pageContext.currentPage + 1)}>{(pageContext.currentPage + 1)}</Link></li>
+            <li><Link to={"/recipes/page-" + (pageContext.currentPage + 1)} className="pagination-link" aria-label={"Goto page " + (pageContext.currentPage + 1)}>{(pageContext.currentPage + 1)}</Link></li>
           }
           {pageContext.currentPage <= pageContext.numPages - 2 &&
             <li><span className="pagination-ellipsis">&hellip;</span></li>
           }
           {pageContext.currentPage <= pageContext.numPages - 2 &&
-            <li><Link to={"recipes/page-" + pageContext.numPages} className="pagination-link" aria-label={"Goto page " + pageContext.numPages }>{pageContext.numPages}</Link></li>
+            <li><Link to={"/recipes/page-" + pageContext.numPages} className="pagination-link" aria-label={"Goto page " + pageContext.numPages }>{pageContext.numPages}</Link></li>
           }
         </ul>
       </nav>
