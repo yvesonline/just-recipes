@@ -1,13 +1,12 @@
 import React from "react"
-import { graphql, Link } from "gatsby"
+import { graphql } from "gatsby"
 import moment from "moment"
-import { FaCaretSquareDown, FaCaretSquareUp } from "react-icons/fa";
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import RecipeSmallBox from "../components/RecipeSmallBox"
+import SortingButton from "../components/SortingButton"
 
 export default ({ pageContext, data }) => {
-  console.log(pageContext)
   const tag = pageContext.tag.charAt(0).toUpperCase() + pageContext.tag.slice(1)
   let thumbs = new Map()
   data.allFile.edges.forEach(({ node }) => {
@@ -33,31 +32,23 @@ export default ({ pageContext, data }) => {
   return (
     <Layout>
       <SEO title={tag} description={"Tags about '"+tag+"'"} />
-      <div class="buttons is-right">
-          <Link to={"/tags/" + pageContext.tag + "/aggregateRating___ratingValue/ASC"}>
-            <button className="button">
-              <span>Rating</span>&nbsp;
-              <FaCaretSquareDown />
-            </button>
-          </Link>
-          <Link to={"/tags/" + pageContext.tag + "/aggregateRating___ratingValue/DESC"}>
-            <button className="button">
-              <span>Rating</span>&nbsp;
-              <FaCaretSquareUp />
-            </button>
-          </Link>
-          <Link to={"/tags/" + pageContext.tag + "/aggregateRating___ratingValue/ASC"}>
-            <button className="button">
-              <span>Date</span>&nbsp;
-              <FaCaretSquareDown />
-            </button>
-          </Link>
-          <Link to={"/tags/" + pageContext.tag + "/aggregateRating___ratingValue/DESC"}>
-            <button className="button">
-              <span>Date</span>&nbsp;
-              <FaCaretSquareUp />
-            </button>
-          </Link>
+      <div className="buttons is-right">
+        <SortingButton
+          name="Rating" direction="Up"
+          link={"/tags/" + pageContext.tag + "/sorted-by-rating-in-descending-order"}
+          disabled={(pageContext.sortBy === "aggregateRating___ratingValue" && pageContext.sortDir === "DESC")} />
+        <SortingButton
+          name="Rating" direction="Down"
+          link={"/tags/" + pageContext.tag + "/sorted-by-rating-in-ascending-order"}
+          disabled={(pageContext.sortBy === "aggregateRating___ratingValue" && pageContext.sortDir === "ASC")} />
+        <SortingButton
+          name="Date" direction="Up"
+          link={"/tags/" + pageContext.tag + "/sorted-by-date-in-descending-order"}
+          disabled={(pageContext.sortBy === "fields___numId" && pageContext.sortDir === "DESC")} />
+        <SortingButton
+          name="Date" direction="Down"
+          link={"/tags/" + pageContext.tag + "/sorted-by-date-in-ascending-order"}
+          disabled={(pageContext.sortBy === "fields___numId" && pageContext.sortDir === "ASC")} />
       </div>
       {content}
     </Layout>

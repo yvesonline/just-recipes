@@ -6,14 +6,16 @@ import { FaUtensils } from 'react-icons/fa';
 export default ({ breadcrumbOverride }) => {
   const { location } = history
   let paths = []
+  let link = `/`
   for (const [index, value] of location.pathname.split("/").entries()) {
     if (value !== ``) {
       paths.push({
         index: index,
-        link: `/` + value + `/`,
+        link: link + value + `/`,
         text: value.replace(/-/g, " "),
         active: false,
       })
+      link = value + `/`
     }
   }
   if (paths.length === 0 && breadcrumbOverride) {
