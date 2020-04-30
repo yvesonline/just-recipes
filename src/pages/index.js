@@ -16,17 +16,19 @@ export default ({ data }) => {
           <div className="column is-4">
             <div className="card">
               <div className="card-image">
-                <figure className="image is-3by2">
-                  {images.has(node.image_internal)
-                    ? <img src={images.get(node.image_internal)} alt=" " />
-                    : <img src="/480x320.png" alt=" " />
-                  }
-                </figure>
+                <Link className="has-text-primary" to={"/recipes/" + node.fields.slug}>
+                  <figure className="image is-3by2">
+                    {images.has(node.image_internal)
+                      ? <img src={images.get(node.image_internal)} alt=" " />
+                      : <img src="/480x320.png" alt=" " />
+                    }
+                  </figure>
+                </Link>
               </div>
             </div>
           </div>
           <div className="column is-8">
-            <h1 className="title">{node.name}</h1>
+            <h1 className="title"><Link className="has-text-primary" to={"/recipes/" + node.fields.slug}>{node.name}</Link></h1>
             <div className="field is-grouped is-grouped-multiline">
               {Array.from(node.fields.keywords.entries(), ([key, value]) => (
                 <div className="control" key={key}>

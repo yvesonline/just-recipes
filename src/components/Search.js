@@ -88,7 +88,7 @@ export default class Search extends Component {
                 {!page.aggregateRating &&
                   <span>No rating&nbsp;</span>
                 }
-                <Link to={"/recipe/" + page.slug}>{page.name}</Link>
+                <Link to={"/recipes/" + page.slug}>{page.name}</Link>
               </li>
             ))}
           </ul>

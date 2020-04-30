@@ -36,6 +36,8 @@ $ npm install --save bulma node-sass gatsby-plugin-sass  # Example of installing
 ## To-do list
 
 - Recipe Detail: Create page
+- Global: Add nicer typography
 - Global: Test on larger data set
 - Global: Add screenshots to `README.md`
+- Global: Add description of `JSON` to `README.md`
 - Global: Create Docker version of application

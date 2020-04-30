@@ -35,6 +35,7 @@ exports.createPages = async ({ graphql, actions }) => {
             fields {
               slug
             }
+            image_internal
           }
         }
       }
@@ -76,6 +77,7 @@ exports.createPages = async ({ graphql, actions }) => {
       component: path.resolve(`./src/templates/Recipe.js`),
       context: {
         slug: node.fields.slug,
+        image_internal: node.image_internal,
       },
     })
   })
