@@ -9,8 +9,9 @@ It showcases using a static site generator, in this case [Gatsby](https://www.ga
 ## Site map
 
 - `/` - **Index** - Lists the latest 3 recipes.
-- `/recipes/` - **Recipes** - Lists all recipes, implements pagination.
-- `/recipes-alpha/` - **Recipes alphabetical** - Lists all recipes alphabetical.
+- `/recipes/` - **Recipes** - Landing page to access recipes.
+- `/recipes/page-<number>` - **Recipes numerical** - Lists all recipes with pagination.
+- `/recipes/page-<letter>` - **Recipes alphabetical** - Lists all recipes alphabetical.
 - `/recipes/<recipe>` - **Recipe Detail** - Shows one recipe.
 - `/tags/` - **Tags** - Lists all tags.
 - `/tags/<tag>` - **Tag Detail** - Lists all recipes for one tag, implements client-side sorting.
@@ -35,6 +36,6 @@ $ npm install --save bulma node-sass gatsby-plugin-sass  # Example of installing
 ## To-do list
 
 - Recipe Detail: Create page
-- Search: Create page
+- Global: Test on larger data set
 - Global: Add screenshots to `README.md`
 - Global: Create Docker version of application

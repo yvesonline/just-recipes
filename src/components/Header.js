@@ -1,7 +1,7 @@
 import React from "react"
-import { globalHistory as history } from '@reach/router'
+import { globalHistory as history } from "@reach/router"
 import { useStaticQuery, graphql, Link } from "gatsby"
-import { FaUtensils } from 'react-icons/fa';
+import { FaUtensils, FaSearch } from "react-icons/fa";
 
 export default ({ breadcrumbOverride }) => {
   const { location } = history
@@ -59,6 +59,8 @@ export default ({ breadcrumbOverride }) => {
         <div className="navbar-end mb-10 mr-20">
           <div className="navbar-item">
             <div className="buttons">
+              <Link to="/search" className="button is-primary"><strong><FaSearch /></strong></Link>
+              <Link to="/recipes" className="button is-primary"><strong>A-Z</strong></Link>
               <Link to="/recipes/page-1" className="button is-primary"><strong>Recipes</strong></Link>
               <Link to="/tags/" className="button is-primary"><strong>Tags</strong></Link>
             </div>

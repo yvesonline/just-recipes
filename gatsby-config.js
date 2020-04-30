@@ -47,5 +47,19 @@ module.exports = {
     `gatsby-plugin-offline`,
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sass`,
+    {
+      resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
+      options: {
+        fields: [`name`, `description`, `slug`, `aggregateRating`],
+        resolvers: {
+          Recipe: {
+            name: node => node.name,
+            description: node => node.description,
+            slug: node => node.fields.slug,
+            aggregateRating: node => node.aggregateRating,
+          }
+        },
+      },
+    },
   ]
 }
