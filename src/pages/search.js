@@ -10,8 +10,6 @@ export default ({ data }) => {
       <SEO title="Search" description="Search our recipes" />
       <Search searchIndex={data.siteSearchIndex.index} />
       <br />
-      <br />
-      <br />
     </Layout>
   )
 }

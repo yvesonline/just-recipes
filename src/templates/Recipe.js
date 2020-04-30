@@ -1,5 +1,5 @@
 import React from "react"
-import { graphql } from "gatsby"
+import { graphql, Link } from "gatsby"
 import moment from "moment"
 import { FaStopwatch, FaUtensils } from "react-icons/fa";
 import Layout from "../components/Layout"
@@ -17,6 +17,13 @@ export default ({ data }) => {
         &nbsp;&nbsp;&nbsp;
         <FaUtensils />&nbsp;{recipe.recipeYield}
       </p>
+      <div className="field is-grouped is-grouped-multiline pb-20">
+        {Array.from(recipe.fields.keywords.entries(), ([key, value]) => (
+          <div className="control" key={key}>
+            <span className="tag is-info is-capitalized"><Link className="has-text-white" to={"/tags/" + value}>{value.replace(/-/g, " ")}</Link></span>
+          </div>
+        ))}
+      </div>
       <div className="tile is-ancestor">
         <div className="tile is-5 is-parent">
           <div className="tile is-child">
@@ -34,6 +41,29 @@ export default ({ data }) => {
           </div>
         </div>
       </div>
+      <div className="tile is-ancestor">
+        <div className="tile is-5 is-parent">
+          <div className="tile is-child content">
+            <p className="title is-2">Ingredients</p>
+            <ul>
+              {Array.from(recipe.recipeIngredient.entries(), ([key, value]) => (
+                <li key={key}>{value}</li>
+              ))}
+            </ul>
+          </div>
+        </div>
+        <div className="tile is-parent">
+          <div className="tile is-child content">
+            <p className="title is-2">Steps</p>
+            {Array.from(recipe.recipeInstructions.entries(), ([key, value]) => (
+              <div>
+                <span className="tag is-primary is-large">{key + 1}</span>
+                <p className="mt-10 mb-10">{value.text}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
     </Layout>
   )
 }
@@ -46,6 +76,13 @@ export const query = graphql`
       recipeYield
       totalTime
       image_internal
+      fields {
+        keywords
+      }
+      recipeIngredient
+      recipeInstructions {
+        text
+      }
     }
     file(name: { eq: $image_internal }) {
       publicURL
