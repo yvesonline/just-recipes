@@ -18,14 +18,14 @@ module.exports = {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `jsons`,
-        path: `${__dirname}/../nyt-cooking-scraper/recipes/jsons-min/`,
+        path: `${__dirname}/data/jsons/`,
       },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
-        path: `${__dirname}/../nyt-cooking-scraper/recipes/images-min/`,
+        path: `${__dirname}/data/images/`,
       },
     },
     {
