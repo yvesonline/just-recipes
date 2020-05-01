@@ -1,0 +1,47 @@
+{
+    "@context": "http://schema.org",
+    "@type": "Recipe",
+    "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingCount": 456,
+        "ratingValue": 2
+    },
+    "author": {
+        "@type": "Person",
+        "name": "Foo Bar"
+    },
+    "description": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Sapien et ligula ullamcorper malesuada proin libero nunc. Tortor at risus viverra adipiscing. Tellus molestie nunc non blandit massa. Eu augue ut lectus arcu bibendum at varius vel pharetra. Dui id ornare arcu odio ut sem. Risus viverra adipiscing at in. Enim sit amet venenatis urna cursus eget nunc scelerisque. Odio morbi quis commodo odio. Id cursus metus aliquam eleifend. Massa tincidunt nunc pulvinar sapien. Eu feugiat pretium nibh ipsum consequat nisl. Posuere sollicitudin aliquam ultrices sagittis orci a scelerisque purus. Vulputate ut pharetra sit amet aliquam. Condimentum mattis pellentesque id nibh tortor id. Facilisi morbi tempus iaculis urna id volutpat lacus laoreet non.",
+    "image": "",
+    "image_internal": "photo-1526991204058-9d45349da374",
+    "keywords": "adipiscing, eiusmod, tempor, sed, sollicitudin",
+    "name": "Vivierra Mauris",
+    "recipeCategory": "lorem, ispum",
+    "recipeCuisine": "",
+    "recipeIngredient": [
+        "1 faucibus interdum",
+        "2 posuere lorem",
+        "3 ipsum dolor",
+        "4 sit amet",
+        "5 consectetur adipiscing",
+        "6 elit duis"
+    ],
+    "recipeInstructions": [
+        {
+            "@context": "http://schema.org",
+            "@type": "HowToStep",
+            "text": "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quam quisque id diam vel quam elementum pulvinar etiam non."
+        },
+        {
+            "@context": "http://schema.org",
+            "@type": "HowToStep",
+            "text": "Ut porttitor leo a diam sollicitudin tempor id. Cras pulvinar mattis nunc sed."
+        },
+        {
+            "@context": "http://schema.org",
+            "@type": "HowToStep",
+            "text": "Sagittis orci a scelerisque purus semper eget duis. Tortor dignissim convallis aenean et tortor at risus viverra."
+        }
+    ],
+    "recipeYield": "1 liter",
+    "totalTime": "PT15M"
+}
