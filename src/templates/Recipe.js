@@ -1,7 +1,7 @@
 import React from "react"
 import { graphql, Link } from "gatsby"
 import moment from "moment"
-import { FaStopwatch, FaUtensils } from "react-icons/fa";
+import { FaStopwatch, FaUtensils, FaStar, FaRegStar } from "react-icons/fa";
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 
@@ -16,6 +16,69 @@ export default ({ data }) => {
         <FaStopwatch />&nbsp;{moment.duration(recipe.totalTime).humanize()}
         &nbsp;&nbsp;&nbsp;
         <FaUtensils />&nbsp;{recipe.recipeYield}
+        &nbsp;&nbsp;&nbsp;
+        {recipe.aggregateRating &&
+          <span>
+            {recipe.aggregateRating.ratingValue === 0 &&
+              <span>
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+              </span>
+            }
+            {recipe.aggregateRating.ratingValue === 1 &&
+              <span>
+                <FaStar className="has-text-warning" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+              </span>
+            }
+            {recipe.aggregateRating.ratingValue === 2 &&
+              <span>
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+              </span>
+            }
+            {recipe.aggregateRating.ratingValue === 3 &&
+              <span>
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaRegStar className="has-text-light" />
+                <FaRegStar className="has-text-light" />
+              </span>
+            }
+            {recipe.aggregateRating.ratingValue === 4 &&
+              <span>
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaRegStar className="has-text-light" />
+              </span>
+            }
+            {recipe.aggregateRating.ratingValue === 5 &&
+              <span>
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+                <FaStar className="has-text-warning" />
+              </span>
+            }
+            &nbsp;({recipe.aggregateRating.ratingCount})&nbsp;
+          </span>
+        }
+        {!recipe.aggregateRating &&
+          <span>No rating&nbsp;</span>
+        }
       </p>
       <div className="field is-grouped is-grouped-multiline pb-20">
         {Array.from(recipe.fields.keywords.entries(), ([key, value]) => (
@@ -83,6 +146,10 @@ export const query = graphql`
       recipeIngredient
       recipeInstructions {
         text
+      }
+      aggregateRating {
+        ratingValue
+        ratingCount
       }
     }
     file(name: { eq: $image_internal }) {
