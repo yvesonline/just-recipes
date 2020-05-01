@@ -10,6 +10,7 @@ export default class Search extends Component {
       query: ``,
       results: [],
     }
+    this.threshold = 20
   }
 
   render() {
@@ -101,6 +102,22 @@ export default class Search extends Component {
       ? this.index
       : Index.load(this.props.searchIndex)
 
+  compare(a, b) {
+    if (a.aggregateRating !== null && b.aggregateRating !== null) {
+      if (b.aggregateRating.ratingValue === a.aggregateRating.ratingValue) {
+        return b.aggregateRating.ratingCount - a.aggregateRating.ratingCount
+      } else {
+        return b.aggregateRating.ratingValue - a.aggregateRating.ratingValue
+      }
+    } else if (a.aggregateRating === null && b.aggregateRating !== null) {
+      return 1
+    } else if (a.aggregateRating !== null && b.aggregateRating === null) {
+      return -1
+    } else {
+      return 0
+    }
+  }
+
   search = evt => {
     const query = evt.target.value
     this.index = this.getOrCreateIndex()
@@ -110,7 +127,8 @@ export default class Search extends Component {
       results: this.index
         .search(query, { expand: true })
         // Map over each ID and return the full document
-        .map(({ ref }) => this.index.documentStore.getDoc(ref)),
+        .map(({ ref }) => this.index.documentStore.getDoc(ref))
+        .sort(this.compare).slice(0, this.threshold),
     })
   }
 }
