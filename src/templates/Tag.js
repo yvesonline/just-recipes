@@ -4,7 +4,7 @@ import moment from "moment"
 import Layout from "../components/Layout"
 import SEO from "../components/SEO"
 import RecipeSmallBox from "../components/RecipeSmallBox"
-import SortingButton from "../components/SortingButton"
+// import SortingButton from "../components/SortingButton"
 
 export default ({ pageContext, data }) => {
   const tag = pageContext.tag.charAt(0).toUpperCase() + pageContext.tag.slice(1)
@@ -33,6 +33,7 @@ export default ({ pageContext, data }) => {
   return (
     <Layout>
       <SEO title={tag} description={"Tags about '"+tag+"'"} />
+      {/*
       <div className="buttons is-right">
         <SortingButton
           name="Rating" direction="Up"
@@ -51,6 +52,7 @@ export default ({ pageContext, data }) => {
           link={"/tags/" + pageContext.tag + "/sorted-by-date-in-ascending-order"}
           disabled={(pageContext.sortBy === "fields___numId" && pageContext.sortDir === "ASC")} />
       </div>
+      */}
       {content}
     </Layout>
   )

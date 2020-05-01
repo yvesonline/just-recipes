@@ -29,7 +29,7 @@ exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
     query {
-      allRecipe(limit: 100000) {
+      allRecipe(limit: 1800, sort: {fields: fields___numId, order: DESC}) {
         edges {
           node {
             fields {
@@ -43,8 +43,10 @@ exports.createPages = async ({ graphql, actions }) => {
   `)
   // Create paginated recipe pages
   const numRecipes = result.data.allRecipe.edges.length
-  const recipesPerPage = 9
+  const recipesPerPage = 90
   const numPages = Math.ceil(numRecipes / recipesPerPage)
+  console.log("-------- PAGINATED RECIPE PAGES --------")
+  console.log(numPages)
   Array.from({ length: numPages }).forEach((_, i) => {
     createPage({
       path: `/recipes/page-${i + 1}`,
@@ -71,6 +73,8 @@ exports.createPages = async ({ graphql, actions }) => {
     })
   }
   // Create individual recipe pages
+  console.log("-------- RECIPE PAGES --------")
+  console.log(result.data.allRecipe.edges.length)
   result.data.allRecipe.edges.forEach(({ node }) => {
     createPage({
       path: `recipes` + node.fields.slug,
@@ -83,7 +87,7 @@ exports.createPages = async ({ graphql, actions }) => {
   })
   const result2 = await graphql(`
     query {
-      allRecipe {
+      allRecipe(limit: 1800, sort: {fields: fields___numId, order: DESC}) {
         edges {
           node {
             fields {
@@ -98,12 +102,16 @@ exports.createPages = async ({ graphql, actions }) => {
   result2.data.allRecipe.edges.forEach(({ node }) => {
     node.fields.keywords.map((item, key) => keywords.add(item))
   })
+  console.log("-------- TAG PAGES --------")
+  console.log(keywords.size)
+  /*
   let sortings = [
     ["aggregateRating___ratingValue", "DESC", "sorted-by-rating-in-descending-order"],
     ["aggregateRating___ratingValue", "ASC", "sorted-by-rating-in-ascending-order"],
     ["fields___numId", "DESC", "sorted-by-date-in-descending-order"],
     ["fields___numId", "ASC", "sorted-by-date-in-ascending-order"],
   ]
+  */
   keywords.forEach((keyword) => {
     createPage({
       path: `tags/` + keyword,
@@ -111,9 +119,10 @@ exports.createPages = async ({ graphql, actions }) => {
       context: {
         tag: keyword,
         sortBy: "aggregateRating___ratingValue",
-        sortDir: "ASC",
+        sortDir: "DESC",
       },
     })
+    /*
     sortings.forEach((sorting) => {
       createPage({
         path: `tags/` + keyword + `/` + sorting[2],
@@ -125,5 +134,6 @@ exports.createPages = async ({ graphql, actions }) => {
         },
       })
     })
+    */
   })
 }

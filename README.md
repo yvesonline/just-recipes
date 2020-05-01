@@ -21,6 +21,8 @@ To add data, put:
 - image files, which are referenced via `image_internal` in the `JSON-LD`, in `data/images/full`, and
 - then rebuild the application.
 
+(The sample images are sourced from [Unsplash](https://unsplash.com/).)
+
 ## Site map
 
 - `/` - **Index** - Lists the latest 3 recipes.
@@ -29,9 +31,8 @@ To add data, put:
 - `/recipes/page-<letter>` - **Recipes alphabetical** - Lists all recipes alphabetical.
 - `/recipes/<recipe>` - **Recipe Detail** - Shows one recipe.
 - `/tags/` - **Tags** - Lists all tags.
-- `/tags/<tag>` - **Tag Detail** - Lists all recipes for one tag, offers sorting by date and by rating.
+- `/tags/<tag>` - **Tag Detail** - Lists all recipes for one tag.
 - `/search/` - **Search** - Provides a full-text search.
-
 
 ## Usage & Development
 
@@ -48,7 +49,14 @@ $ gatsby serve                                           # Serve a Gatsby App
 $ npm install --save bulma node-sass gatsby-plugin-sass  # Example of installing plugins
 ```
 
-## To-do list
+(When running `gatsby develop/build` with large data sets you probably need to increase the max memory for NodeJS: `export NODE_OPTIONS=--max_old_space_size=4096`.)
 
-- Global: Test on larger data set
-- Global: Create Docker version of application
+## Deployment & Hosting
+
+Gatsby provides steps on deploying and hosting in their [documentation](https://www.gatsbyjs.org/docs/deploying-and-hosting/).
+
+If you want to run *Just Recipes* in a Docker container follow those steps and use the `Dockerfile` provided in this repository:
+```lang=shell
+$ docker build -t jr:test .
+$ docker run --name jr-test -d -p 80:80 jr:test
+```

@@ -5,7 +5,7 @@ module.exports = {
     short_name: `JR`,
     description: `A frontend to view recipes`,
     author: `Yves Weissig`,
-    version: `0.1`,
+    version: `0.1.0`,
   },
   plugins: [
     {
