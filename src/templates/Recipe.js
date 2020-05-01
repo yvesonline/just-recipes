@@ -9,9 +9,9 @@ export default ({ data }) => {
   const recipe = data.recipe
   const file = data.file
   return (
-    <Layout breadcrumbOverride={recipe.name}>
+    <Layout breadcrumbOverride={recipe.fields.numId}>
       <SEO title={recipe.name} description={recipe.description} />
-      <p className="title is-2">{recipe.name}</p>
+      <p className="title is-2 has-text-grey-dark">{recipe.name}</p>
       <p className="subtitle is-4">
         <FaStopwatch />&nbsp;{moment.duration(recipe.totalTime).humanize()}
         &nbsp;&nbsp;&nbsp;
@@ -20,7 +20,7 @@ export default ({ data }) => {
       <div className="field is-grouped is-grouped-multiline pb-20">
         {Array.from(recipe.fields.keywords.entries(), ([key, value]) => (
           <div className="control" key={key}>
-            <span className="tag is-info is-capitalized"><Link className="has-text-white" to={"/tags/" + value}>{value.replace(/-/g, " ")}</Link></span>
+            <span className="tag is-light is-capitalized"><Link className="has-text-black" to={"/tags/" + value}>{value.replace(/-/g, " ")}</Link></span>
           </div>
         ))}
       </div>
@@ -44,7 +44,7 @@ export default ({ data }) => {
       <div className="tile is-ancestor">
         <div className="tile is-5 is-parent">
           <div className="tile is-child content">
-            <p className="title is-2">Ingredients</p>
+            <p className="title is-2 has-text-grey-dark">Ingredients</p>
             <ul>
               {Array.from(recipe.recipeIngredient.entries(), ([key, value]) => (
                 <li key={key}>{value}</li>
@@ -54,7 +54,7 @@ export default ({ data }) => {
         </div>
         <div className="tile is-parent">
           <div className="tile is-child content">
-            <p className="title is-2">Steps</p>
+            <p className="title is-2 has-text-grey-dark">Steps</p>
             {Array.from(recipe.recipeInstructions.entries(), ([key, value]) => (
               <div>
                 <span className="tag is-primary is-large">{key + 1}</span>
@@ -78,6 +78,7 @@ export const query = graphql`
       image_internal
       fields {
         keywords
+        numId
       }
       recipeIngredient
       recipeInstructions {

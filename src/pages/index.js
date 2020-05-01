@@ -28,11 +28,11 @@ export default ({ data }) => {
             </div>
           </div>
           <div className="column is-8">
-            <h1 className="title"><Link className="has-text-primary" to={"/recipes/" + node.fields.slug}>{node.name}</Link></h1>
+            <h1 className="title"><Link className="has-text-grey-dark" to={"/recipes/" + node.fields.slug}>{node.name}</Link></h1>
             <div className="field is-grouped is-grouped-multiline">
               {Array.from(node.fields.keywords.entries(), ([key, value]) => (
                 <div className="control" key={key}>
-                  <span className="tag is-info is-capitalized"><Link className="has-text-white" to={"/tags/" + value}>{value.replace(/-/g, " ")}</Link></span>
+                  <span className="tag is-light is-capitalized"><Link className="has-text-black" to={"/tags/" + value}>{value.replace(/-/g, " ")}</Link></span>
                 </div>
               ))}
             </div>

@@ -1,11 +1,27 @@
 @charset "utf-8";
 
 /*
-Load signature font.
+Load fonts.
 */
 @font-face {
 	font-family: 'BioRhyme';
 	src: url(BioRhyme/BioRhyme-Regular.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Lora';
+	src: url(Lora/Lora-Regular.ttf) format('truetype');
+}
+@font-face {
+	font-family: 'Merriweather';
+	src: url(Merriweather/Merriweather-Regular.ttf) format('truetype');
+}
+
+/*
+Define custom fonts.
+*/
+$body-family: "Merriweather", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+.title, .subtitle, h1, h2, h3, h4, h5, h6 {
+	font-family: "Lora";
 }
 
 /*
@@ -14,6 +30,11 @@ Define some custom colors.
 $title-color: hsl(171, 100%, 41%);
 $navbar-background-color: #F9F9F9;
 $footer-background-color: #F9F9F9;
+$primary: #E33D26 !default;
+$primary-invert: #FFFFFF !default;
+$link: $primary !default;
+$link-invert: $primary-invert !default;
+$link-focus-border: $primary !default;
 
 /*
 Create margin and padding helpers.
