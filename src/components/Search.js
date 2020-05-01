@@ -15,14 +15,14 @@ export default class Search extends Component {
   render() {
     return (
       <div>
-        <p class="control has-icons-left">
-          <input class="input" type="text" placeholder="Search"
+        <p className="control has-icons-left">
+          <input className="input" type="text" placeholder="Search"
                  value={this.state.query} onChange={this.search} />
-          <span class="icon is-left">
+          <span className="icon is-left">
             <FaSearch />
           </span>
         </p>
-        <div class="content">
+        <div className="content">
           <ul>
             {this.state.results.map(page => (
               <li key={page.id}>
