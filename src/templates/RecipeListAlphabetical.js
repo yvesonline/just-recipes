@@ -57,7 +57,7 @@ export default ({ pageContext, data }) => {
 export const query = graphql`
   query($regex: String!) {
     allRecipe(
-      sort: {order: DESC, fields: fields___numId}
+      sort: {order: ASC, fields: name}
       filter: {name: {regex: $regex}}
     ) {
       edges {
