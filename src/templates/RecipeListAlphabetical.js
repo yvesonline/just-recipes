@@ -22,6 +22,7 @@ export default ({ pageContext, data }) => {
             image={thumbs[node.node.image_internal]}
             time={moment.duration(node.node.totalTime).humanize()}
             stars={node.node.aggregateRating ? node.node.aggregateRating.ratingValue : undefined}
+            count={node.node.aggregateRating ? node.node.aggregateRating.ratingCount : undefined}
             />
         </div>
       ))}
@@ -66,6 +67,7 @@ export const query = graphql`
           totalTime
           aggregateRating {
             ratingValue
+            ratingCount
           }
           fields {
             slug

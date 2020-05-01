@@ -80,6 +80,9 @@ export default (props) => {
                 <FaStar className="has-text-warning" />
               </span>
             }
+            {props.count !== undefined &&
+              <span>&nbsp;({props.count})&nbsp;</span>
+            }
             <br />
             {props.time}
           </div>
