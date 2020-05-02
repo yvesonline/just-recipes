@@ -8,6 +8,9 @@ import SEO from "../components/SEO"
 export default ({ data }) => {
   const recipe = data.recipe
   const file = data.file
+  if (recipe.recipeInstructions === null) {
+    recipe.recipeInstructions = new Map()
+  }
   return (
     <Layout breadcrumbOverride={recipe.fields.numId}>
       <SEO title={recipe.name} description={recipe.description} />
