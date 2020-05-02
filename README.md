@@ -60,3 +60,5 @@ If you want to run *Just Recipes* in a Docker container follow those steps and u
 $ docker build -t jr:test .
 $ docker run --name jr-test -d -p 80:80 jr:test
 ```
+
+(The application will be available under `http://localhost/`, you might need to replace `localhost` with your Host IP depending on your network setup, e.g. if you're using a VPN.)
